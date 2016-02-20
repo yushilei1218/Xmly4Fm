@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="album"
+            type="com.yushilei.xmly4fm.entities.AlbumEntity" />
+
+        <import type="android.net.Uri" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/dimenSmall"
+        android:paddingRight="@dimen/dimenSmall">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{album.onClick}">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:imageURI="@{Uri.parse( album.coverLarge??``)}"
+                app:placeholderImage="@mipmap/recommend_album_default"
+                app:placeholderImageScaleType="fitXY"
+                app:viewAspectRatio="1" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/colorAphlaBlack"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{album.title}"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textSmall" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/book_complete"
+                app:visibility="@{album.isFinished==2?View.VISIBLE:View.GONE}" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{album.trackTitle}"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textMiddle" />
+
+    </LinearLayout>
+</layout>

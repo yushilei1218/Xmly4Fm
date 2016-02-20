@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yushilei.xmly4fm.fragments.MainFragment">
+
+    <FrameLayout
+        android:id="@+id/main_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RadioGroup
+        android:id="@+id/main_tab_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/main_fragment_tab1_recommend"
+            style="@style/tab_radio"
+            android:drawableTop="@drawable/main_tab1_radio_selector"
+            android:text="发现" />
+
+        <RadioButton
+            android:id="@+id/main_fragment_tab2_custom"
+            style="@style/tab_radio"
+            android:drawableTop="@drawable/main_tab2_radio_selector"
+            android:text="定制听" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/main_fragment_tab3_download"
+            style="@style/tab_radio"
+            android:drawableTop="@drawable/main_tab3_radio_selector"
+            android:text="下载听" />
+
+        <RadioButton
+            android:id="@+id/main_fragment_tab4_my"
+            style="@style/tab_radio"
+            android:drawableTop="@drawable/main_tab4_radio_selector"
+            android:text="我" />
+    </RadioGroup>
+
+</LinearLayout>

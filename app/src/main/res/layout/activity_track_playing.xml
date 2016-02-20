@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yushilei.xmly4fm.TrackPlayingActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimenMiddle">
+
+        <ImageView
+            android:id="@+id/track_playing_back"
+            android:layout_width="25dp"
+            android:layout_height="15dp"
+            android:src="@mipmap/player_titlebar_back" />
+
+        <TextView
+            android:id="@+id/track_playing_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimenLarge"
+            android:layout_marginRight="@dimen/dimenLarge"
+            android:layout_weight="1"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="titile"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textHuge" />
+    </LinearLayout>
+    <!-- 背景图 + 弹幕-->
+    <RelativeLayout
+        android:id="@+id/track_playing_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/track_playing_cover_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:viewAspectRatio="1" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/track_playing_bullet_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/track_playing_cover_bg"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/dimenLarge"
+            android:layout_marginRight="@dimen/dimenLarge"
+            android:checked="false" />
+    </RelativeLayout>
+    <!-- 播放进度 拖拽条 -->
+    <SeekBar
+        android:id="@+id/track_playing_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!-- 播放控制部分-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimenMiddle">
+
+        <TextView
+            android:id="@+id/track_playing_album_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:drawableTop="@drawable/track_play_album_list_selector"
+            android:text="播放列表"
+            android:textSize="@dimen/textSmall" />
+
+        <FrameLayout
+            android:id="@+id/track_playing_play_part"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:id="@+id/track_playing_loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/player_loading" />
+
+            <ImageView
+                android:id="@+id/track_playing_pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/player_toolbar_pause_normal" />
+
+            <ImageView
+                android:id="@+id/track_playing_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/player_toolbar_play_normal"
+                android:visibility="gone" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/track_playing_play_part">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/player_toolbar_previous_pressed" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/track_playing_play_part">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/player_toolbar_next_pressed" />
+        </FrameLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:drawableTop="@drawable/track_play_time_count_down_selector"
+            android:text="定时关闭"
+            android:textSize="@dimen/textSmall" />
+    </RelativeLayout>
+
+</LinearLayout>

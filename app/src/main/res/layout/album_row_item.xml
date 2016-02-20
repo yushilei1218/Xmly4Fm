@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="recommendEntity"
+            type="com.yushilei.xmly4fm.entities.RecommendEntity" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/dimenMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dimenSmall"
+            android:paddingLeft="@dimen/dimenSmall"
+            android:paddingRight="@dimen/dimenSmall"
+            android:paddingTop="@dimen/dimenSmall">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/finding_title_tag"
+                android:drawablePadding="@dimen/dimenSmall"
+                android:text="@{recommendEntity.title}"
+                android:textSize="@dimen/textMiddle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawablePadding="@dimen/dimenSmall"
+                android:drawableRight="@mipmap/ic_more"
+                android:text="更多"
+                android:textSize="@dimen/textMiddle"
+                app:visibility="@{recommendEntity.hasMore? View.VISIBLE:View.GONE}" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <include
+                layout="@layout/album_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:album="@{recommendEntity.list[0]}" />
+
+            <include
+                layout="@layout/album_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:album="@{recommendEntity.list[1]}" />
+
+            <include
+                layout="@layout/album_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:album="@{recommendEntity.list[2]}" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

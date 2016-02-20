@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="focusImagesEntity"
+            type="com.yushilei.xmly4fm.entities.FocusImagesEntity" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:init="@{focusImagesEntity.list}">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/focus_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <RadioGroup
+            android:id="@+id/focus_indicator_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/dimenMiddle"
+            android:orientation="horizontal" />
+
+    </FrameLayout>
+</layout>

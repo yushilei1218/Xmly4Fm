@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="specialColumnEntity"
+            type="com.yushilei.xmly4fm.entities.SpecialColumnEntity" />
+    </data>
+
+    <LinearLayout
+        android:layout_marginBottom="@dimen/dimenMiddle"
+        android:background="@color/colorWhite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/dimenSmall"
+            android:paddingLeft="@dimen/dimenSmall"
+            android:paddingRight="@dimen/dimenSmall"
+            android:paddingTop="@dimen/dimenSmall">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/finding_title_tag"
+                android:drawablePadding="@dimen/dimenSmall"
+                android:text="@{specialColumnEntity.title}"
+                android:textSize="@dimen/textMiddle" />
+        </RelativeLayout>
+
+        <include
+            layout="@layout/special_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:specialEntity="@{specialColumnEntity.list[0]}" />
+
+        <include
+            layout="@layout/special_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:specialEntity="@{specialColumnEntity.list[1]}" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="specialEntity"
+            type="com.yushilei.xmly4fm.entities.SpecialEntity" />
+
+        <import type="android.net.Uri" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:imageURI="@{Uri.parse(specialEntity.coverPath??``)}"
+            app:placeholderImage="@mipmap/image_default"
+            app:placeholderImageScaleType="fitXY"
+            app:viewAspectRatio="1" />
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/dimenMiddle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimenSmall"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{specialEntity.title}"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textLarge" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimenSmall"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{specialEntity.subtitle}"
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/textMiddle" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimenSmall"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{specialEntity.footnote}"
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/textSmall" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/dimenMiddle"
+            android:src="@mipmap/arrow_right_2" />
+
+    </LinearLayout>
+</layout>

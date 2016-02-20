@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yushilei.xmly4fm.fragments.keyword.KwSearchFragment">
+
+    <RadioGroup
+        android:id="@+id/kw_search_tab_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLightGray"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimenSmall">
+
+        <RadioButton
+            android:id="@+id/kw_search_tab1_all"
+            style="@style/tab_radio_color_white"
+            android:background="@drawable/kw_search_radio_left_selector"
+            android:gravity="center"
+            android:text="全部" />
+
+        <RadioButton
+            android:id="@+id/kw_search_tab2_album"
+            style="@style/tab_radio_color_white"
+            android:background="@drawable/kw_search_radio_middle_selector"
+            android:gravity="center"
+            android:text="找专辑" />
+
+        <RadioButton
+            android:id="@+id/kw_search_tab3_user"
+            style="@style/tab_radio_color_white"
+            android:background="@drawable/kw_search_radio_middle_selector"
+            android:gravity="center"
+            android:text="找人" />
+
+        <RadioButton
+            android:id="@+id/kw_search_tab4_track"
+            style="@style/tab_radio_color_white"
+            android:background="@drawable/kw_search_radio_right_selector"
+            android:gravity="center"
+            android:text="找声音" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/kw_search_result_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

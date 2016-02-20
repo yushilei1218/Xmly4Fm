@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yushilei.xmly4fm.fragments.category.CategoryDetailFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/dimenMiddle">
+
+        <ImageView
+            android:id="@+id/category_detail_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_btn_red_selector" />
+
+        <TextView
+            android:id="@+id/category_detail_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimenMiddle"
+            android:layout_marginRight="@dimen/dimenMiddle"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textHuge"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/category_detail_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_search" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorLightGray" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/category_detail_tab_bar"
+        android:layout_width="match_parent"
+        app:tabIndicatorHeight="3dp"
+        app:tabIndicatorColor="@color/colorRed"
+        app:tabSelectedTextColor="@color/colorRed"
+        app:tabTextColor="@color/colorBlack"
+        android:layout_height="wrap_content"
+        app:tabMode="scrollable" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/category_detail_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

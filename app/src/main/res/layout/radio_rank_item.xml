@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/dimenSmall">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/radio_rank_item_cover"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:placeholderImage="@mipmap/image_default"
+        app:placeholderImageScaleType="fitXY"
+        app:viewAspectRatio="1" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dimenSmall"
+        android:layout_weight="3">
+
+        <TextView
+            android:id="@+id/radio_rank_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textLarge" />
+
+        <TextView
+            android:id="@+id/radio_rank_item_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/textMiddle" />
+
+        <TextView
+            android:id="@+id/radio_rank_item_play_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:drawableLeft="@mipmap/bg_myitem_playtimes"
+            android:drawablePadding="@dimen/dimenSmall"
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/textMiddle" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/radio_rank_item_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/rec_bg_play" />
+</LinearLayout>

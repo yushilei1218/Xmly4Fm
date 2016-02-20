@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/dimenSmall">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/kw_album_item_cover"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:placeholderImage="@mipmap/image_default"
+        app:placeholderImageScaleType="fitXY"
+        app:viewAspectRatio="1" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dimenSmall"
+        android:layout_weight="4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/kw_album_item_hot_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dimenSmall"
+                android:src="@mipmap/ic_hottest" />
+
+            <TextView
+                android:id="@+id/kw_album_item_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="title"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textLarge" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/kw_album_item_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="intro" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/kw_album_item_play_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dimenMiddle"
+                android:drawableLeft="@mipmap/bg_myitem_playtimes"
+                android:drawablePadding="@dimen/dimenSmall"
+                android:text="19万"
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/textSmall" />
+
+            <TextView
+                android:id="@+id/kw_album_item_track_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/sound_time_icon"
+                android:drawablePadding="@dimen/dimenSmall"
+                android:text="19集"
+                android:textColor="@color/colorGray"
+                android:textSize="@dimen/textSmall" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

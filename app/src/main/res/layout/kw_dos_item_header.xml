@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingBottom="@dimen/dimenMiddle"
+    android:paddingTop="@dimen/dimenMiddle">
+
+    <TextView
+        android:id="@+id/kw_dos_item_header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/finding_title_tag"
+        android:drawablePadding="@dimen/dimenSmall"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textLarge" />
+
+    <TextView
+        android:id="@+id/kw_dos_item_header_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:drawablePadding="@dimen/dimenSmall"
+        android:drawableRight="@mipmap/ic_more"
+        android:textSize="@dimen/textMiddle" />
+
+</RelativeLayout>

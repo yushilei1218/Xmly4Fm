@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pop_window_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAphlaBlack">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="100dp"
+        android:background="@drawable/pop_window_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_marginTop="@dimen/dimenLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/dimenLarge"
+            android:text="温馨提示"
+            android:textColor="@color/colorRed" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorRed" />
+
+        <TextView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimenLarge"
+            android:layout_marginTop="@dimen/dimenLarge"
+            android:text="确定退出喜马拉雅FM？"
+            android:textColor="@color/colorBlack" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pop_window_cancel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/pop_text_left_shape"
+                android:gravity="center"
+                android:padding="@dimen/dimenMiddle"
+                android:text="取消"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/pop_window_mini_size"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/pop_text_shape"
+                android:gravity="center"
+                android:padding="@dimen/dimenSmall"
+                android:text="最小化"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:id="@+id/pop_window_quit"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/pop_text_right_shape"
+                android:gravity="center"
+                android:padding="@dimen/dimenSmall"
+                android:text="确定"
+                android:textColor="@color/colorBlack" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

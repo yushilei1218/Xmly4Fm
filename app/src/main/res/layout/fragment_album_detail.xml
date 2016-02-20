@@ -1,0 +1,269 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yushilei.xmly4fm.fragments.AlbumDetailFragment">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/album_detail_header_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:actualImageScaleType="fitXY" />
+            <!-- 提供类似actionBar功能-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="@color/colorAphlaBlack"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimenSmall">
+
+                <ImageView
+                    android:id="@+id/album_detail_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/back_btn_normal" />
+
+                <TextView
+                    android:id="@+id/album_detail_header_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/textLarge"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/actionbar_more_normal" />
+            </LinearLayout>
+
+            <!--album详情-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="?actionBarSize"
+                android:background="@color/colorAphlaBlack"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/dimenLarge"
+                android:paddingLeft="@dimen/dimenLarge"
+                android:paddingRight="@dimen/dimenLarge">
+
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/colorWhite">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/album_detail_cover"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:placeholderImage="@mipmap/recommend_album_default"
+                        app:placeholderImageScaleType="fitXY"
+                        app:viewAspectRatio="1" />
+
+                    <TextView
+                        android:id="@+id/album_detail_play_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginBottom="@dimen/dimenSmall"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/textSmall" />
+                </FrameLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dimenMiddle"
+                    android:layout_weight="3">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:id="@+id/album_detail_icon"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            app:placeholderImage="@mipmap/image_default"
+                            app:roundAsCircle="true"
+                            app:viewAspectRatio="1" />
+
+                        <TextView
+                            android:id="@+id/album_detail_nick_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimenSmall"
+                            android:gravity="center"
+                            android:paddingBottom="@dimen/dimenSmall"
+                            android:paddingTop="@dimen/dimenSmall"
+                            android:textColor="@color/colorWhite" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/album_detail_intro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="暂无简介"
+                        android:textColor="@color/colorLightGray"
+                        android:textSize="@dimen/textMiddle" />
+
+                    <LinearLayout
+                        android:id="@+id/album_detail_tag_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="horizontal" />
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_more" />
+            </LinearLayout>
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAphlaBlack"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@mipmap/ic_album_collect"
+                    android:drawablePadding="@dimen/dimenSmall"
+                    android:padding="@dimen/dimenSmall"
+                    android:text="收藏"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/textMiddle" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorLightGray" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@mipmap/ic_album_download_normal"
+                    android:drawablePadding="@dimen/dimenSmall"
+                    android:padding="@dimen/dimenSmall"
+                    android:text="批量下载"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/textMiddle" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorLightGray" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@mipmap/ic_album_related_normal"
+                    android:drawablePadding="@dimen/dimenSmall"
+                    android:padding="@dimen/dimenSmall"
+                    android:text="相关推荐"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/textMiddle" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorLightGray"
+            android:padding="@dimen/dimenMiddle">
+
+            <TextView
+                android:id="@+id/album_detail_tracks_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/textMiddle" />
+
+            <TextView
+                android:id="@+id/album_detail_sort"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawableLeft="@mipmap/ic_album_sort_asc"
+                android:drawablePadding="@dimen/dimenSmall"
+                android:text="排序"
+                android:textSize="@dimen/textMiddle" />
+
+            <TextView
+                android:id="@+id/album_detail_selections"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dimenLarge"
+                android:layout_toLeftOf="@id/album_detail_sort"
+                android:drawableLeft="@mipmap/pager_selector"
+                android:drawablePadding="@dimen/dimenSmall"
+                android:text="选集"
+                android:textSize="@dimen/textMiddle" />
+        </RelativeLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/album_detail_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/dimenSmall"
+        android:paddingRight="@dimen/dimenSmall"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</android.support.design.widget.CoordinatorLayout>
+
+

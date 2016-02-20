@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/dimenMiddle">
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/track_item_anim_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/track_play_anim_list"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/track_item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="title"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textLarge" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimenSmall"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/track_item_play_time"
+                style="@style/track_text_view"
+                android:drawableLeft="@mipmap/bg_myitem_playtimes_new"
+                android:text="156.万" />
+
+            <TextView
+                android:id="@+id/track_item_alltime"
+                style="@style/track_text_view"
+                android:drawableLeft="@mipmap/bg_myitem_alltime_new"
+                android:text="35:00" />
+
+            <TextView
+                android:id="@+id/track_item_comment"
+                style="@style/track_text_view"
+                android:drawableLeft="@mipmap/bg_myitem_comments_new"
+                android:text="200" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/track_item_create_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8月前"
+            android:textSize="@dimen/textSmall" />
+
+        <ImageView
+            android:id="@+id/track_item_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:src="@mipmap/download_unpressed" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yushilei.xmly4fm.fragments.keyword.HotKwAndHistoryKwFragment">
+    <!-- 历史搜索记录-->
+    <LinearLayout
+        android:id="@+id/hot_kw_and_history_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/hot_kw_tag"
+                android:layout_width="3dp"
+                android:layout_height="15dp"
+                android:background="@color/colorRed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimenSmall"
+                android:layout_toRightOf="@id/hot_kw_tag"
+                android:text="搜索历史" />
+
+            <TextView
+                android:id="@+id/hot_kw_and_history_kw_clear_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="清空历史"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <GridView
+            android:id="@+id/hot_kw_and_history_kw_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorLightGray" />
+    </LinearLayout>
+    <!--热门搜索记录-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/hot_kw_tag2"
+                android:layout_width="3dp"
+                android:layout_height="15dp"
+                android:background="@color/colorRed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimenSmall"
+                android:layout_toRightOf="@id/hot_kw_tag2"
+                android:text="热门搜索" />
+        </RelativeLayout>
+
+        <GridView
+            android:id="@+id/hot_kw_and_history_kw_hotkw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+    </LinearLayout>
+
+</LinearLayout>

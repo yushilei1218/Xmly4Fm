@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/dimenSmall">
+
+    <RelativeLayout
+        android:background="@drawable/anchor_item_shape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/anchor_item_cover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:placeholderImage="@mipmap/image_default"
+            app:placeholderImageScaleType="fitXY"
+            app:viewAspectRatio="1" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/anchor_item_nick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimenMiddle"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/textMiddle" />
+
+    <TextView
+        android:id="@+id/anchor_item_focus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimenMiddle"
+        android:background="@drawable/anchor_foucs_text_shape"
+        android:text="+ 关注"
+        android:textColor="@color/colorRed"
+        android:textSize="@dimen/textMiddle" />
+</LinearLayout>

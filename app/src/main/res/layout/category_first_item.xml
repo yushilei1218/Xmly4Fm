@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dimenMiddle"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimenSmall"
+        app:columnCount="4"
+        app:rowCount="2">
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/category_first_item_1"
+            android:padding="@dimen/dimenSmall"
+            app:layout_columnSpan="2"
+            app:layout_columnWeight="2"
+            app:layout_rowSpan="2"
+            app:layout_rowWeight="2"
+            app:placeholderImage="@mipmap/recommend_album_default"
+            app:placeholderImageScaleType="fitXY"
+            app:viewAspectRatio="1" />
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/category_first_item_2"
+            android:padding="@dimen/dimenSmall"
+            app:layout_columnSpan="1"
+            app:layout_columnWeight="1"
+            app:layout_rowSpan="1"
+            app:layout_rowWeight="1"
+            app:placeholderImage="@mipmap/image_default"
+            app:placeholderImageScaleType="fitXY"
+            app:viewAspectRatio="1" />
+
+
+        >
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/category_first_item_3"
+            android:padding="@dimen/dimenSmall"
+            app:layout_columnSpan="1"
+            app:layout_columnWeight="1"
+            app:layout_rowSpan="1"
+            app:layout_rowWeight="1"
+            app:placeholderImage="@mipmap/image_default"
+            app:placeholderImageScaleType="fitXY"
+            app:viewAspectRatio="1" />
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/category_first_item_4"
+            android:padding="@dimen/dimenSmall"
+            app:layout_columnSpan="1"
+            app:layout_columnWeight="1"
+            app:layout_rowSpan="1"
+            app:layout_rowWeight="1"
+            app:placeholderImage="@mipmap/image_default"
+            app:placeholderImageScaleType="fitXY"
+            app:viewAspectRatio="1" />
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/category_first_item_5"
+            android:padding="@dimen/dimenSmall"
+            app:layout_columnSpan="1"
+            app:layout_columnWeight="1"
+            app:layout_rowSpan="1"
+            app:layout_rowWeight="1"
+            app:placeholderImage="@mipmap/image_default"
+            app:placeholderImageScaleType="fitXY"
+            app:viewAspectRatio="1" />
+
+
+    </android.support.v7.widget.GridLayout>
+
+</LinearLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/dimenSmall">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/kw_track_item_cover"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:placeholderImage="@mipmap/image_default"
+        app:placeholderImageScaleType="fitXY"
+        app:roundAsCircle="true"
+        app:viewAspectRatio="1" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimenSmall"
+        android:layout_weight="4"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/kw_track_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/textLarge" />
+
+        <TextView
+            android:id="@+id/kw_track_item_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimenSmall"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorGray"
+            android:textSize="@dimen/textMiddle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimenSmall"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textSize="@dimen/textSmall"
+                android:id="@+id/kw_track_item_play_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimenMiddle"
+                android:drawableLeft="@mipmap/bg_myitem_playtimes"
+                android:drawablePadding="@dimen/dimenSmall" />
+
+            <TextView
+                android:textSize="@dimen/textSmall"
+                android:id="@+id/kw_track_item_all_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimenMiddle"
+                android:drawableLeft="@mipmap/bg_myitem_alltime"
+                android:drawablePadding="@dimen/dimenSmall" />
+
+            <TextView
+                android:textSize="@dimen/textSmall"
+                android:id="@+id/kw_track_item_play_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimenMiddle"
+                android:drawableLeft="@mipmap/bg_myitem_like"
+                android:drawablePadding="@dimen/dimenSmall" />
+
+            <TextView
+                android:textSize="@dimen/textSmall"
+                android:id="@+id/kw_track_item_comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimenMiddle"
+                android:drawableLeft="@mipmap/bg_myitem_comments"
+                android:drawablePadding="@dimen/dimenSmall" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
