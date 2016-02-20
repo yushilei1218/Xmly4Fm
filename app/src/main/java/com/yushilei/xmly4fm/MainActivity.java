@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,6 +23,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,9 +42,27 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
     private boolean isBind;
     private boolean finishService = false;
     private PopupWindow popQuit;
-    private View parent;
+    private static View parent;
     private TextView historyToastTv;
     private boolean checkLastPlay = true;
+    public static boolean isForeground = false;
+    public static PopupWindow popShare;
+    public static final int CLOSE_SHARE = 5;
+    public static final int OPEN_SHARE = 6;
+    public static Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case OPEN_SHARE:
+                    popShare.showAtLocation(parent, Gravity.CENTER, 0, 0);
+                    break;
+                case CLOSE_SHARE:
+                    popShare.dismiss();
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
         //2016年2月19号增加百度推送功能
         PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY, "8kOG6HkVwAsGaGh03sNOMmVd");
 
+        initPopShare();
     }
 
     @Override
@@ -187,6 +209,7 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
     protected void onResume() {
         super.onResume();
         //开启服务
+        isForeground = true;
         Intent intent = new Intent(this, MediaService.class);
         isBind = bindService(intent, this, BIND_AUTO_CREATE);
     }
@@ -252,5 +275,17 @@ public class MainActivity extends AppCompatActivity implements ServiceConnection
                 popQuit.dismiss();
             }
         });
+    }
+
+    private void initPopShare() {
+        View view = LayoutInflater.from(this).inflate(R.layout.share_info_loading, null, false);
+        popShare = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
+
+    }
+
+    @Override
+    protected void onPause() {
+        isForeground = false;
+        super.onPause();
     }
 }

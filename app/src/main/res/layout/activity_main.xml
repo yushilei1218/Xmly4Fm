@@ -51,4 +51,5 @@
         android:background="@mipmap/bg_point_toast"
         android:textColor="@color/colorBlack"
         android:visibility="gone" />
+
 </RelativeLayout>

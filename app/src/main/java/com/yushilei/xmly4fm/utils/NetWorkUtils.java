@@ -21,6 +21,7 @@ import com.yushilei.xmly4fm.entities.TrackPageEntity;
 import com.yushilei.xmly4fm.entities.category.CategoryTagListEntity;
 import com.yushilei.xmly4fm.entities.radio.RadioHomeEntity;
 import com.yushilei.xmly4fm.entities.rank.RankHomeEntity;
+import com.yushilei.xmly4fm.entities.share.ShareEntity;
 
 import java.io.IOException;
 import java.util.Date;
@@ -71,6 +72,9 @@ public class NetWorkUtils {
 
         @GET("/mobile/discovery/v2/rankingList/group?channel=and-d10&device=android&includeActivity=true&includeSpecial=true&scale=2&version=4.3.44.2")
         Call<RankHomeEntity> getRankHomeEntity();
+
+        @GET("/mobile/v1/album/share/content?device=android")
+        Call<ShareEntity> getShareEntity(@Query("albumId") long albumId, @Query("tpName") String tpName);
     }
 
     public interface SuggestService {

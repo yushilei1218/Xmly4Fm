@@ -31,7 +31,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dimenLarge"
+            android:layout_marginBottom="30dp"
             android:layout_marginTop="@dimen/dimenLarge"
             android:text="确定退出喜马拉雅FM？"
             android:textColor="@color/colorBlack" />

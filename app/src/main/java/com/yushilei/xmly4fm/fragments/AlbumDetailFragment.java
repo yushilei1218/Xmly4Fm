@@ -24,14 +24,18 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.yushilei.xmly4fm.MainActivity;
 import com.yushilei.xmly4fm.R;
 import com.yushilei.xmly4fm.adapters.TrackListAdapter;
+import com.yushilei.xmly4fm.asynctask.NetAsyncTask;
 import com.yushilei.xmly4fm.entities.AlbumDetailEntity;
 import com.yushilei.xmly4fm.entities.AlbumEntity;
 import com.yushilei.xmly4fm.entities.TrackEntity;
+import com.yushilei.xmly4fm.entities.share.ShareEntity;
 import com.yushilei.xmly4fm.utils.NetWorkUtils;
 import com.yushilei.xmly4fm.utils.NumFormat;
 
 import java.util.List;
 
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
@@ -55,6 +59,7 @@ public class AlbumDetailFragment extends Fragment implements Callback<AlbumDetai
     private TextView tracksCount;
     private LinearLayout albumTagContainer;
     private Call<AlbumDetailEntity> call;
+    private long albumId = -1;
 
     public AlbumDetailFragment() {
     }
@@ -77,7 +82,7 @@ public class AlbumDetailFragment extends Fragment implements Callback<AlbumDetai
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Bundle bundle = getArguments();
-        long albumId = bundle.getLong("albumId");
+        albumId = bundle.getLong("albumId");
         call = NetWorkUtils.getService().getAlbumDetailEntity(albumId, 1);
         call.enqueue(this);
     }
@@ -107,6 +112,10 @@ public class AlbumDetailFragment extends Fragment implements Callback<AlbumDetai
         tracksCount = ((TextView) view.findViewById(R.id.album_detail_tracks_count));
         albumTagContainer = ((LinearLayout) view.findViewById(R.id.album_detail_tag_container));
 
+        ImageView shareImg = (ImageView) view.findViewById(R.id.album_detail_share);
+
+        addOnClickToShareImg(shareImg);
+
         TextView albumSort = ((TextView) view.findViewById(R.id.album_detail_sort));
         TextView albumSelections = ((TextView) view.findViewById(R.id.album_detail_selections));
 
@@ -127,6 +136,47 @@ public class AlbumDetailFragment extends Fragment implements Callback<AlbumDetai
             @Override
             public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
                 super.getItemOffsets(outRect, view, parent, state);
+            }
+        });
+    }
+
+    private void addOnClickToShareImg(ImageView shareImg) {
+        shareImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (albumId != -1) {
+                    if (MainActivity.isForeground) {
+                        // MainActivity.progressBar.setVisibility(View.VISIBLE);
+                        MainActivity.handler.sendEmptyMessage(MainActivity.OPEN_SHARE);
+                    }
+                    NetWorkUtils.getService().getShareEntity(albumId, "qq").enqueue(new Callback<ShareEntity>() {
+                        @Override
+                        public void onResponse(Response<ShareEntity> response, Retrofit retrofit) {
+                            ShareEntity body = response.body();
+                            ShareSDK.initSDK(getContext());
+                            OnekeyShare oks = new OnekeyShare();
+                            oks.disableSSOWhenAuthorize();
+                            oks.setTitle(body.getTitle());
+                            oks.setText(body.getContent());
+                            oks.setSite(getString(R.string.app_name));
+                            oks.setUrl(body.getUrl());
+                            //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+
+                            NetAsyncTask netAsyncTask = new NetAsyncTask();
+                            netAsyncTask.initParams(getContext(), oks);
+                            netAsyncTask.execute(body.getWeixinPic());
+                            // 启动分享GUI
+                            //oks.show(getContext());
+                        }
+
+                        @Override
+                        public void onFailure(Throwable t) {
+                            t.printStackTrace();
+                            MainActivity.handler.sendEmptyMessage(MainActivity.CLOSE_SHARE);
+                            Toast.makeText(getContext(), "网络异常", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
             }
         });
     }

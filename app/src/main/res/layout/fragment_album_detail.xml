@@ -30,7 +30,8 @@
 
                 <ImageView
                     android:id="@+id/album_detail_back"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/back_btn_normal" />
 
@@ -38,7 +39,7 @@
                     android:id="@+id/album_detail_header_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="6"
                     android:gravity="center"
                     android:maxLines="1"
                     android:textColor="@color/colorWhite"
@@ -46,7 +47,11 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/album_detail_share"
+                    android:onClick="btnShareContent"
+                    android:layout_marginRight="@dimen/dimenMiddle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/actionbar_more_normal" />
             </LinearLayout>

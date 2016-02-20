@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAphlaBlack"
+    android:orientation="vertical">
+
+    <LinearLayout
+
+        android:id="@+id/share_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/pop_window_shape"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:padding="@dimen/dimenLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="@dimen/textLarge"
+                android:textColor="@color/colorRed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="温馨提示" />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:background="@color/colorRed"
+            android:layout_height="1px"/>
+
+        <LinearLayout
+            android:padding="@dimen/dimenLarge"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/share_loading_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/loading" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimenLarge"
+                android:layout_weight="1"
+                android:text="正在努力分享..."
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/textLarge" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
