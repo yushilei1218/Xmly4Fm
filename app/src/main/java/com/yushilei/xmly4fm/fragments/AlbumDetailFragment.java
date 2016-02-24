@@ -146,7 +146,6 @@ public class AlbumDetailFragment extends Fragment implements Callback<AlbumDetai
             public void onClick(View v) {
                 if (albumId != -1) {
                     if (MainActivity.isForeground) {
-                        // MainActivity.progressBar.setVisibility(View.VISIBLE);
                         MainActivity.handler.sendEmptyMessage(MainActivity.OPEN_SHARE);
                     }
                     NetWorkUtils.getService().getShareEntity(albumId, "qq").enqueue(new Callback<ShareEntity>() {

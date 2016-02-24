@@ -13,6 +13,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layoutManager="LinearLayoutManager" />
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/recommend_request_failed"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+            <ImageView
+                android:src="@mipmap/device_tingshubao_wifi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="@dimen/dimenMiddle"
+                android:text="网络异常点击重试"
+                android:textSize="@dimen/textLarge"
+                android:textColor="@color/colorGray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
     </RelativeLayout>
 </layout>

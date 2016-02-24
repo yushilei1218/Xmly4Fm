@@ -6,8 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.baidu.android.pushservice.PushMessageReceiver;
-import com.yushilei.xmly4fm.MainActivity;
-import com.yushilei.xmly4fm.PushTestActivity;
+import com.yushilei.xmly4fm.BarCodeActivty;
 import com.yushilei.xmly4fm.TrackPlayingActivity;
 
 import org.json.JSONException;
@@ -281,7 +280,7 @@ public class PushReceiver extends PushMessageReceiver {
         Utils.logStringCache = logText;
 
         Intent intent = new Intent();
-        intent.setClass(context.getApplicationContext(), PushTestActivity.class);
+        intent.setClass(context.getApplicationContext(), BarCodeActivty.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.getApplicationContext().startActivity(intent);
     }

@@ -28,7 +28,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.yushilei.xmly4fm.entities.BulletCommentsEntity;
 import com.yushilei.xmly4fm.entities.Comment;
 import com.yushilei.xmly4fm.entities.TrackEntity;
-import com.yushilei.xmly4fm.services.MediaService;
+import com.yushilei.xmly4fm.services.LocalMediaService;
 import com.yushilei.xmly4fm.utils.NetWorkUtils;
 
 import java.util.ArrayList;
@@ -39,9 +39,9 @@ import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class TrackPlayingActivity extends AppCompatActivity implements View.OnClickListener, ServiceConnection, Runnable, MediaService.MediaStateCallBack {
+public class TrackPlayingActivity extends AppCompatActivity implements View.OnClickListener, ServiceConnection, Runnable, LocalMediaService.MediaStateCallBack {
 
-    private MediaService.Controller mediaController;
+    private LocalMediaService.Controller mediaController;
 
     private SimpleDraweeView coverBg;
     private RelativeLayout bulletContainer;
@@ -80,7 +80,7 @@ public class TrackPlayingActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track_playing);
-        isBind = bindService(new Intent(this, MediaService.class), this, BIND_AUTO_CREATE);
+        isBind = bindService(new Intent(this, LocalMediaService.class), this, BIND_AUTO_CREATE);
 
         ImageView backImg = (ImageView) findViewById(R.id.track_playing_back);
         backImg.setOnClickListener(this);
@@ -192,7 +192,7 @@ public class TrackPlayingActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
-        mediaController = ((MediaService.Controller) service);
+        mediaController = ((LocalMediaService.Controller) service);
         mediaController.setCallBack(this);
         Log.d("TrackPlayingActivity", "onServiceConnected " + mediaController);
 

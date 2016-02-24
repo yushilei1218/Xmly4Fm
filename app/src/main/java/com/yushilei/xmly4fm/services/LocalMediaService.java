@@ -10,21 +10,22 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.yushilei.xmly4fm.entities.TrackEntity;
+import com.yushilei.xmly4fm.receivers.NetStateReceiver;
 
 import java.io.IOException;
 
-public class MediaService extends Service {
+public class LocalMediaService extends Service {
     private MediaPlayer player;
 
     @Override
     public void onRebind(Intent intent) {
         super.onRebind(intent);
-        Log.d("MediaService", "onRebind");
+        Log.d("LocalMediaService", "onRebind");
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
-        Log.d("MediaService", "onUnbind");
+        Log.d("LocalMediaService", "onUnbind");
 
         return false;
         // return super.onUnbind(intent);
@@ -33,7 +34,9 @@ public class MediaService extends Service {
     @Override
     public void onDestroy() {
         try {
-            player.stop();
+            if (player.isPlaying()) {
+                player.stop();
+            }
             player.release();
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,18 +47,18 @@ public class MediaService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d("MediaService", "service被创建=" + this);
+        Log.d("LocalMediaService", "service被创建=" + this);
 
         player = new MediaPlayer();
     }
 
-    public MediaService() {
+    public LocalMediaService() {
     }
 
     @Override
     public IBinder onBind(Intent intent) {
         Controller controller = new Controller();
-        Log.d("MediaService", "controller被创建=" + controller);
+        Log.d("LocalMediaService", "controller被创建=" + controller);
         return controller;
     }
 
@@ -74,8 +77,24 @@ public class MediaService extends Service {
             //存储数据
             saveLastPlay(entity);
             try {
+                String playUrl = null;
+                switch (NetStateReceiver.CURRENT_NETWORK) {
+                    case NetStateReceiver.NET_2G:
+                    case NetStateReceiver.NET_3G:
+                    case NetStateReceiver.NET_4G:
+                        Log.d("Controller", "NET_2G or 3G");
+                        playUrl = entity.getPlayUrl32();
+                        break;
+                    case NetStateReceiver.NET_WIFI:
+                        Log.d("Controller", "NET_Wifi");
+                        playUrl = entity.getPlayUrl64();
+                        break;
+                    default:
+                        playUrl = entity.getPlayUrl32();
+                        break;
+                }
                 player.reset();
-                player.setDataSource(entity.getPlayUrl32());
+                player.setDataSource(playUrl);
                 player.prepareAsync();
                 player.setOnPreparedListener(this);
                 player.setOnCompletionListener(this);

@@ -6,6 +6,16 @@ package com.yushilei.xmly4fm.entities;
  * Entity mapped to table "TRACK_ENTITY".
  */
 public class TrackEntity {
+    private boolean isDowned=false;
+
+    public boolean isDowned() {
+        return isDowned;
+    }
+
+    public void setIsDowned(boolean isDowned) {
+        this.isDowned = isDowned;
+    }
+
     //新增 suggest
     private long id;
     private int count_play;

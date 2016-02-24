@@ -1,13 +1,117 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorLightGray"
     tools:context="com.yushilei.xmly4fm.fragments.SelfFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="我的" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAphlaBlack"
+            android:gravity="center"
+            android:padding="@dimen/dimenLarge">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/finding_hot_sound_default"
+                android:gravity="center"
+                android:text="登录"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/textHuge"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="@dimen/dimenLarge"
+            android:background="@color/colorRed"
+            android:gravity="center"
+            android:padding="@dimen/dimenMiddle"
+            android:text="录音"
+            android:textColor="@color/colorWhite" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimenLarge"
+            android:background="@color/colorWhite"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimenLarge">
+
+            <TextView
+                android:id="@+id/self_zxing_scan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:drawableLeft="@mipmap/setting_tallour"
+                android:gravity="center_vertical"
+                android:text="二维码扫描" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@mipmap/ic_more" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimenLarge"
+            android:background="@color/colorWhite"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimenLarge">
+
+            <TextView
+                android:id="@+id/self_zxing_produce"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:drawableLeft="@mipmap/setting_push"
+                android:gravity="center_vertical"
+                android:text="二维码生成" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@mipmap/ic_more" />
+        </LinearLayout>
+        <LinearLayout
+            android:padding="@dimen/dimenLarge"
+            android:background="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimenLarge"
+            android:orientation="vertical">
+
+            <EditText
+                android:hint="请输入二维码地址"
+                android:id="@+id/self_zxing_open"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/self_zxing_use_zxing"
+                android:gravity="center_vertical"
+                android:drawableLeft="@mipmap/setting_sleep"
+                android:layout_width="match_parent"
+                android:text="使用ZXing自带的Activity生成二维码"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</ScrollView>

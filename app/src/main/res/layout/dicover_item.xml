@@ -12,6 +12,7 @@
     </data>
 
     <LinearLayout
+        android:onClick="@{discoveryEntity.onClick}"
         android:layout_marginLeft="@dimen/dimenMiddle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

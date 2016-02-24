@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.yushilei.xmly4fm.BR;
+import com.yushilei.xmly4fm.MainActivity;
 import com.yushilei.xmly4fm.R;
 import com.yushilei.xmly4fm.adapters.FocusImageAdapter;
 import com.yushilei.xmly4fm.adapters.RecyclerAdapter;
@@ -29,6 +30,7 @@ import com.yushilei.xmly4fm.entities.FocusImagesEntity;
 import com.yushilei.xmly4fm.entities.HomeEntity;
 import com.yushilei.xmly4fm.entities.RecommendEntity;
 import com.yushilei.xmly4fm.entities.SpecialColumnEntity;
+import com.yushilei.xmly4fm.receivers.NetStateReceiver;
 import com.yushilei.xmly4fm.utils.NetWorkUtils;
 
 import java.lang.reflect.Type;
@@ -47,6 +49,7 @@ public class RecommendFragment extends Fragment implements Callback<HomeEntity> 
 
 
     private RecyclerAdapter adapter;
+    private View netErrorBg;
 
     public RecommendFragment() {
     }
@@ -60,7 +63,7 @@ public class RecommendFragment extends Fragment implements Callback<HomeEntity> 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        NetWorkUtils.getService().getHomeEntity().enqueue(this);
+
         FragmentRecommendBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recommend, container, false);
 
         Map<Type, RecyclerAdapter.BindTool> map = new HashMap<>();
@@ -72,11 +75,29 @@ public class RecommendFragment extends Fragment implements Callback<HomeEntity> 
 
         adapter = new RecyclerAdapter(getContext(), map);
         binding.recommendRecycler.setAdapter(adapter);
-        return binding.getRoot();
+        View root = binding.getRoot();
+        netErrorBg = root.findViewById(R.id.recommend_request_failed);
+        netErrorBg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.setVisibility(View.GONE);
+                NetWorkUtils.getService().getHomeEntity().enqueue(RecommendFragment.this);
+                MainActivity.handler.sendEmptyMessage(MainActivity.LOADING);
+            }
+        });
+
+        NetWorkUtils.getService().getHomeEntity().enqueue(this);
+        MainActivity.handler.sendEmptyMessage(MainActivity.LOADING);
+
+        return root;
     }
+
 
     @Override
     public void onResponse(Response<HomeEntity> response, Retrofit retrofit) {
+
+        netErrorBg.setVisibility(View.GONE);
+        MainActivity.handler.sendEmptyMessage(MainActivity.UNLOADING);
         adapter.add(response.body().getFocusImages());//热点图
         adapter.add(response.body().getEditorRecommendAlbums());//小编推荐
         adapter.add(response.body().getSpecialColumn());//精品听单
@@ -86,6 +107,8 @@ public class RecommendFragment extends Fragment implements Callback<HomeEntity> 
 
     @Override
     public void onFailure(Throwable t) {
+        netErrorBg.setVisibility(View.VISIBLE);
+        MainActivity.handler.sendEmptyMessage(MainActivity.UNLOADING);
         t.printStackTrace();
         Toast.makeText(getContext(), "网络异常", Toast.LENGTH_SHORT).show();
     }

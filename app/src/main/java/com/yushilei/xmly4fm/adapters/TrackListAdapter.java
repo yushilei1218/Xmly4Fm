@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.yushilei.xmly4fm.MainActivity;
 import com.yushilei.xmly4fm.R;
+import com.yushilei.xmly4fm.asynctask.TrackDownAsyncTask;
 import com.yushilei.xmly4fm.entities.TrackEntity;
 import com.yushilei.xmly4fm.utils.NumFormat;
 
@@ -25,7 +26,7 @@ import java.util.List;
 /**
  * Created by yushilei on 2016/1/23.
  */
-public class TrackListAdapter extends RecyclerView.Adapter<TrackListAdapter.TrackViewHolder> {
+public class TrackListAdapter extends RecyclerView.Adapter<TrackListAdapter.TrackViewHolder> implements View.OnClickListener {
     private Context context;
     private List<TrackEntity> list;
     private MainActivity activity;
@@ -129,11 +130,56 @@ public class TrackListAdapter extends RecyclerView.Adapter<TrackListAdapter.Trac
         } else {
             holder.allTimeTv.setVisibility(View.GONE);
         }
+        if (entity.isDowned()) {
+            holder.downImg.setSelected(true);
+        } else {
+            holder.downImg.setSelected(false);
+            holder.downImg.setTag(position);
+            holder.downImg.setOnClickListener(this);
+        }
+        long l = System.currentTimeMillis();
+        Date createdAt = entity.getCreatedAt();
+        long time = createdAt.getTime();
+        long second = (l - time) / 1000;
+        if (second > 0) {
+            if (3600 > second) {
+                long minute = second / 3600;
+                String data = minute + "分钟前";
+                holder.createTimeTv.setText(data);
+                //分
+            } else if (second >= 3600 && second < 86400) {
+                //小时
+                long hour = second / 3600;
+                String data = hour + "小时前";
+                holder.createTimeTv.setText(data);
+
+            } else if (second >= 86400 && second < 86400 * 30) {
+                long day = second / 86400;
+                String data = day + "天前";
+                holder.createTimeTv.setText(data);
+            } else if (second >= 86400 * 30) {
+                long mouth = second / (86400 * 30);
+                String data = mouth + "月前";
+                holder.createTimeTv.setText(data);
+            }
+        } else {
+            holder.createTimeTv.setVisibility(View.GONE);
+        }
     }
 
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    @Override
+    public void onClick(View v) {
+        int position = (int) v.getTag();
+        // TODO: 2016/2/23 下载
+        TrackEntity trackEntity = list.get(position);
+        trackEntity.setIsDowned(true);
+        notifyDataSetChanged();
+        new TrackDownAsyncTask(v.getContext()).execute(trackEntity.getDownloadUrl());
     }
 
     public static class TrackViewHolder extends RecyclerView.ViewHolder {
@@ -154,7 +200,6 @@ public class TrackListAdapter extends RecyclerView.Adapter<TrackListAdapter.Trac
             allTimeTv = ((TextView) itemView.findViewById(R.id.track_item_alltime));
             commentTv = ((TextView) itemView.findViewById(R.id.track_item_comment));
             createTimeTv = ((TextView) itemView.findViewById(R.id.track_item_create_time));
-
         }
     }
 }

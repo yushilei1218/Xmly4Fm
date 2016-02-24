@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:src="@mipmap/download_unpressed" />
+            android:src="@drawable/track_downed_selector" />
 
     </LinearLayout>
 
