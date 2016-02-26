@@ -10,6 +10,7 @@ import com.yushilei.xmly4fm.entities.Anchor.AnchorHomeEntity;
 import com.yushilei.xmly4fm.entities.AutoSuggestEntity;
 import com.yushilei.xmly4fm.entities.BulletCommentsEntity;
 import com.yushilei.xmly4fm.entities.CategoryListEntity;
+import com.yushilei.xmly4fm.entities.CustomRecommendEntity;
 import com.yushilei.xmly4fm.entities.HomeEntity;
 import com.yushilei.xmly4fm.entities.HotKeyWordEntity;
 import com.yushilei.xmly4fm.entities.SuggestAllEntity;
@@ -75,6 +76,10 @@ public class NetWorkUtils {
 
         @GET("/mobile/v1/album/share/content?device=android")
         Call<ShareEntity> getShareEntity(@Query("albumId") long albumId, @Query("tpName") String tpName);
+
+        @GET("/feed/v1/recommend/classic/unlogin?device=android&pageId=1&pageSize=20")
+        Call<CustomRecommendEntity> getCustomRecommendEntity();
+
     }
 
     public interface SuggestService {

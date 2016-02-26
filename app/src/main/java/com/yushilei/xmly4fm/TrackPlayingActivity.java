@@ -214,7 +214,7 @@ public class TrackPlayingActivity extends AppCompatActivity implements View.OnCl
 
                 try {
                     int index = random.nextInt(bindings.size());
-                    int ranSleep = 1000+ random.nextInt(2000);
+                    int ranSleep = 1000 + random.nextInt(2000);
                     Thread.sleep(ranSleep);
                     Binding binding = bindings.get(index);
                     //如果当前的View不再运行动画状态
@@ -335,10 +335,16 @@ public class TrackPlayingActivity extends AppCompatActivity implements View.OnCl
 
                     @Override
                     public void onAnimationRepeat(Animation animation) {
-
                     }
                 });
             }
         }
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

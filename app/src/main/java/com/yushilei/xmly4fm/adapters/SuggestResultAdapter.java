@@ -328,7 +328,8 @@ public class SuggestResultAdapter extends BaseAdapter {
         FragmentTransaction transaction = manager.beginTransaction();
         KeyWordFragment keyWordFragment = ((KeyWordFragment) manager.findFragmentByTag("KeyWordFragment"));
         transaction.setCustomAnimations(R.anim.open_in, R.anim.open_out, R.anim.colse_in, R.anim.colse_out);
-        transaction.add(R.id.main_container, AlbumDetailFragment.newInstance(entity.getId()));
+        long albumId=entity.getId()==0?entity.getAlbumId().longValue():entity.getId();
+        transaction.add(R.id.main_container, AlbumDetailFragment.newInstance(albumId));
         if (keyWordFragment != null) {
             transaction.hide(keyWordFragment);
         }
@@ -409,6 +410,8 @@ public class SuggestResultAdapter extends BaseAdapter {
     private void initAlbumItem(AlbumEntity albumEntity, AlbumViewHolder holder) {
         if (albumEntity.getCover_path() != null) {
             holder.albumCover.setImageURI(Uri.parse(albumEntity.getCover_path()));
+        } else if (albumEntity.getCoverMiddle() != null) {
+            holder.albumCover.setImageURI(Uri.parse(albumEntity.getCoverMiddle()));
         }
         holder.albumTitle.setText(albumEntity.getTitle());
         if (albumEntity.getPlay() > 2000000) {
@@ -420,6 +423,9 @@ public class SuggestResultAdapter extends BaseAdapter {
         if (albumEntity.getPlay() > 0) {
             holder.albumPlayTime.setVisibility(View.VISIBLE);
             holder.albumPlayTime.setText(NumFormat.longToString(albumEntity.getPlay()));
+        } else if (albumEntity.getPlaysCounts()>0) {
+            holder.albumPlayTime.setVisibility(View.VISIBLE);
+            holder.albumPlayTime.setText(NumFormat.longToString(albumEntity.getPlaysCounts()));
         } else {
             holder.albumPlayTime.setVisibility(View.GONE);
         }

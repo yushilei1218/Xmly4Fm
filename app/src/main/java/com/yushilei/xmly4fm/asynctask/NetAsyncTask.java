@@ -33,6 +33,7 @@ public class NetAsyncTask extends AsyncTask<String, Void, String> {
         if (params != null && params[0] != null) {
             byte[] data = HttpUtil.doGetBytes(params[0]);
             File directory = Environment.getExternalStorageDirectory();
+
             if (!directory.exists()) {
                 directory.mkdirs();
             }

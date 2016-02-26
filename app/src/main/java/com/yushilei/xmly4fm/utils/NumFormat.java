@@ -4,6 +4,10 @@ package com.yushilei.xmly4fm.utils;
  * Created by yushilei on 2016/1/23.
  */
 public class NumFormat {
+    private static long KB = 1024;
+    private static long MB = 1024 * 1024;
+    private static long GB = 1024 * 1024 * 1024;
+
     public static String longToTime(long time) {
         String timeStr = null;
         long hour = 0;
@@ -52,5 +56,23 @@ public class NumFormat {
             format = String.valueOf(data);
         }
         return format;
+    }
+
+    public static String longToKbMbGb(long data) {
+        String ret = null;
+        if (data >= GB) {
+            long gb = data / GB;
+            ret = gb + "G";
+        } else if (data >= MB) {
+            long mb = data / MB;
+            ret = mb + "M";
+        } else if (data > KB) {
+            long kb = data / KB;
+            ret = kb + "K";
+        } else {
+            ret = "0K";
+        }
+
+        return ret;
     }
 }

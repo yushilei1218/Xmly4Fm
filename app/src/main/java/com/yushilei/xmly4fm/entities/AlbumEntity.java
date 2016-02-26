@@ -18,8 +18,18 @@ import com.yushilei.xmly4fm.fragments.MainFragment;
  * Entity mapped to table "ALBUM_ENTITY".
  */
 public class AlbumEntity {
+    private int playsCounts;
+
+    public int getPlaysCounts() {
+        return playsCounts;
+    }
+
+    public void setPlaysCounts(int playsCounts) {
+        this.playsCounts = playsCounts;
+    }
+
     //新增 为suggest
-    private Long id;
+    private long id;
     private String cover_path;
     private int play;
 

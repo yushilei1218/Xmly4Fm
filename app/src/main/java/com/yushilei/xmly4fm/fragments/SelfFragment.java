@@ -2,7 +2,9 @@ package com.yushilei.xmly4fm.fragments;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,8 +18,12 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.client.android.Contents;
 import com.google.zxing.client.android.Intents;
 import com.yushilei.xmly4fm.BarCodeActivty;
+import com.yushilei.xmly4fm.LoginActivity;
 import com.yushilei.xmly4fm.MainActivity;
 import com.yushilei.xmly4fm.R;
+
+import java.io.File;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,13 +50,32 @@ public class SelfFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        TextView openPicTv = (TextView) view.findViewById(R.id.self_open_pics);
+        openPicTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+                Intent intent = new Intent(Intent.ACTION_PICK, Uri.fromFile(dir));
+                startActivity(intent);
+            }
+        });
+        View login = view.findViewById(R.id.self_login);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
         zXingScanTv = ((TextView) view.findViewById(R.id.self_zxing_scan));
         zXingProduceTv = ((TextView) view.findViewById(R.id.self_zxing_produce));
         barCodeByZXing = ((TextView) view.findViewById(R.id.self_zxing_use_zxing));
+
         final TextView content = (TextView) view.findViewById(R.id.self_zxing_open);
         barCodeByZXing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (!TextUtils.isEmpty(content.getText().toString())) {
                     Intent intent = new Intent(Intents.Encode.ACTION);
 

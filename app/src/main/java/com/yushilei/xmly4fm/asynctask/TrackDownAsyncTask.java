@@ -18,6 +18,7 @@ import java.io.InputStream;
  */
 public class TrackDownAsyncTask extends AsyncTask<String, Void, String> {
     private Context context;
+    private File dir;
 
     public TrackDownAsyncTask(Context context) {
         this.context = context;
@@ -29,13 +30,13 @@ public class TrackDownAsyncTask extends AsyncTask<String, Void, String> {
         String state = Environment.getExternalStorageState();
         if (params[0] != null && state.equals(Environment.MEDIA_MOUNTED)) {
             File directory = Environment.getExternalStorageDirectory();
-            File dir = new File(directory, "xmly4fm");
+            dir = new File(directory, "xmly4fm/tracks");
             if (!dir.exists()) {
                 dir.mkdirs();
             }
             byte[] data = HttpUtil.doGetBytes(params[0]);
             try {
-                FileOutputStream fos = new FileOutputStream(new File(dir, "aa.m4a"));
+                FileOutputStream fos = new FileOutputStream(new File(dir, System.currentTimeMillis() + ".m4a"));
                 fos.write(data);
                 fos.close();
                 ret = "yes";

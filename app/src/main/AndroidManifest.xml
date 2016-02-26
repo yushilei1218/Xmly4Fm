@@ -34,6 +34,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
+            android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
@@ -169,6 +170,7 @@
         <activity
             android:name=".WebViewActivity"
             android:theme="@style/AppThemeWithAnimation" />
+
         <receiver
             android:name=".receivers.NetStateReceiver"
             android:enabled="true"
@@ -177,6 +179,11 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
+        <receiver
+            android:name=".receivers.NotificationReceiver"
+            android:enabled="true" />
+
+        <activity android:name=".LoginActivity" />
     </application>
 
 </manifest>
